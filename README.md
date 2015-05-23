@@ -1,2 +1,2 @@
 # sriranganathan.github.io
-my personal page
+This is my first attempt in developing any kind of a web page. This may look a bit amateurish right now. A lot of updates will be made to this page.
