@@ -7,17 +7,19 @@
 		<meta name="description" content="My Personal Page">
 		<meta name=viewport content="width=device-width, initial-scale=1">
 		<title>R Sriranganathan</title>
-		<link href='https://fonts.googleapis.com/css?family=Raleway:700,500' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Raleway:500' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="bootstrap.css">
+		<link rel="icon" type="image/png" href="SR.png" />
   		<style>
   			html,body
   			{
-				background-color: #333231;
+				background-color: #ffffff;
       			margin: 0;
       			height: 100%;
       			font-family: 'Raleway', sans-serif;
-      			color: white;
+      			color: #333231;
       			text-align:center;
+      			overflow:hidden;
   			}
   			body:after
   			{
@@ -29,26 +31,68 @@
   			}
   			h1 
   			{
-      			font-weight: 700;
+      			font-weight: 500;
     		}
 		    p 
 		    {
 		      	font-weight: 500;
-		      	color: rgba(255, 255, 255,.5);
+		      	color: rgba(49,49,48,.75);
 		    }
 		    .info
 		    {
 		    	display: none;
 		    	vertical-align: middle;
+		    	z-index: 1;
 		    }
 		    #coming_soon
 		    {
 		    	border-radius: 50%;
 		    	margin-bottom:10px;
 		    }
+		    #load
+		    {
+		    	position:absolute;
+		    	z-index: 2;
+		    }
+		    #load-left
+		    {
+		    	background-color: #333231;
+		    	position:absolute;
+		    	left:0;
+		    	width: 50%;
+		    	height:100%;
+		    	z-index: 2;
+		    }
+		    #load-right
+		    {
+		    	background-color: #333231;
+		    	position:absolute;
+		    	right:0;
+		    	width: 50%;
+		    	height:100%;
+		    	z-index: 2;
+		    }
+		    .left-loaded
+		    {
+		        -webkit-transform: translateX(-100%);
+		        -ms-transform: translateX(-100%);
+                transform: translateX(-100%);
+
+		        -webkit-transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+		        transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+    		}
+    		.right-loaded
+    		{
+        		-webkit-transform: translateX(100%);
+            	-ms-transform: translateX(100%);
+                transform: translateX(100%);
+
+        		-webkit-transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);  
+                transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+    }
 
   		</style>
-  		<script>
+  		<!--<script>
 		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -56,25 +100,29 @@
 
 		  ga('create', 'UA-69072147-1', 'auto');
 		  ga('send', 'pageview');
-		</script>
+		</script> -->
 	</head>
 	<body>
-		<canvas id="load"></canvas>
+		<div id="load-left"></div>
+		<div id="load-right"></div>
+		<canvas id="load" height="60" width="60"></canvas>
 		<div class="info">
-	    	<center><img id="coming_soon" class="img-responsive" src="coming_soon.png"></center>
-	    	<div class="col s12">
-	    		<h1>Please stay tuned.</h1>
+	    	<center><img id="coming_soon" class="img-responsive" src="comingsoon.png" ></center>
+	    	<br>
+	    	<br>
+	    	<div class="col-xs-12">
+	    		<h1>Page still in the Oven</h1>
 	    	</div>
-	    	<div class="col s12">
-	    		<p>Something new is coming soon. To see it first sit tight!</p>
+	    	<div class="col-xs-12">
+	    		<p style="font-size:20px;">Something new is coming soon. To see it first, sit tight!</p>
 	    	</div>
   		</div>
   		<script src="jquery.min.js"></script>
   		<script src="bootstrap.js"></script>
   		<script>
 	      var canvas = document.getElementById('load');
-	      canvas.width = $(window).width();
-	      canvas.height = $(window).height();
+	      $("#load").css("left",$(window).width()/2-30);
+	      $("#load").css("top",$(window).height()/2-30);
 	      var context = canvas.getContext('2d');
 	      var x = canvas.width / 2;
 	      var y = canvas.height / 2;
@@ -128,16 +176,35 @@
 	        endAngle2 += -0.02 * Math.PI;
 	        endAngle3 += 0.02 * Math.PI;
 	        endAngle4 += 0.02 * Math.PI;
-	        if(load == 0)
+
 	        frame = window.requestAnimationFrame(load_animation);
+
 	      }
+
 	      frame = window.requestAnimationFrame(load_animation);
+	      delay();
 
 	      window.addEventListener('load', function(){
 	      load =1;
-	      $("#load").css("display", "none");
-	      $(".info").css("display", "inline-block");
 	      });
+
+	      function delay()
+	      {
+	      	if(load == 0)
+	      		setTimeout(delay,1000);
+	      	else
+	      		end_animation();
+	      }
+
+	      function end_animation()
+	      {
+	      	window.cancelAnimationFrame(frame);
+	      	$("#load").css("display", "none");
+	      	$(".info").css("display", "inline-block");
+	      	$("#load-right").addClass("right-loaded");
+	      	$("#load-left").addClass("left-loaded");
+	      }
+
     	</script>
 	</body>
 </html>
