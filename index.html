@@ -1,95 +1,17 @@
 <!DOCTYPE html>
 <html>
     <head>
+
         <meta charset="utf-8">
         <meta http-equiv="content-type" content="text/html">
         <meta name="author" content="R Sriranganathan">
         <meta name="description" content="My Personal Page">
         <meta name=viewport content="width=device-width, initial-scale=1">
         <title>R Sriranganathan</title>
-        <link href='https://fonts.googleapis.com/css?family=Raleway:500' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="bootstrap.css">
+
         <link rel="icon" type="image/png" href="SR.png" />
-        <style>
-         html,body
-         {
-             background-color: #ffffff;
-             margin: 0;
-             height: 100%;
-             font-family: 'Raleway', sans-serif;
-             color: #333231;
-             text-align:center;
-         }
-         body:after
-         {
-             content: "";
-             width: 0;
-             height: 100%;
-             display: inline-block;
-             vertical-align: middle;
-         }
-         h1
-         {
-             font-weight: 500;
-         }
-         p
-         {
-             font-weight: 500;
-             color: rgba(49,49,48,.75);
-         }
-         .info
-         {
-             display: none;
-             vertical-align: middle;
-             z-index: 1;
-         }
-         #coming_soon
-         {
-             border-radius: 50%;
-             margin-bottom:10px;
-         }
-         #load
-         {
-             position:absolute;
-             z-index: 2;
-         }
-         #load-left
-         {
-             background-color: #333231;
-             position:absolute;
-             left:0;
-             width: 50%;
-             height:100%;
-             z-index: 2;
-         }
-         #load-right
-         {
-             background-color: #333231;
-             position:absolute;
-             right:0;
-             width: 50%;
-             height:100%;
-             z-index: 2;
-         }
-         .left-loaded
-         {
-             -webkit-transform: translateX(-100%);
-             -ms-transform: translateX(-100%);
-             transform: translateX(-100%);
-
-             -webkit-transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
-             transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
-         }
-         .right-loaded
-         {
-             -webkit-transform: translateX(100%);
-             -ms-transform: translateX(100%);
-             transform: translateX(100%);
-
-             -webkit-transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
-             transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
-         }
-        </style>
+        <link rel="stylesheet" href="bootstrap.css">
+        <link rel="stylesheet" href="index.css">
 
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -100,6 +22,7 @@
             ga('create', 'UA-69072147-1', 'auto');
             ga('send', 'pageview'); 
         </script>
+
     </head>
     <body>
         <div id="load-left"></div>
@@ -118,100 +41,6 @@
         </div>
         <script src="jquery.min.js"></script>
         <script src="bootstrap.js"></script>
-        <script>
-         var canvas = document.getElementById('load');
-         $("#load").css("left",$(window).width()/2-30);
-         $("#load").css("top",$(window).height()/2-30);
-         var context = canvas.getContext('2d');
-         var x = canvas.width / 2;
-         var y = canvas.height / 2;
-         var radius1 = 25;
-         var radius2 = 15;
-         var counterClockwise = false;
-         var startAngle1 = 1.25 * Math.PI;
-         var endAngle1 = 1.75 * Math.PI;
-         var startAngle2 = 2.25 * Math.PI;
-         var endAngle2 = 2.75 * Math.PI;
-         var startAngle3 = 1.75 * Math.PI;
-         var endAngle3 = 2.25 * Math.PI;
-         var startAngle4 = 2.75 * Math.PI;
-         var endAngle4 = 3.25 * Math.PI;
-         var frame;
-         var load =0;
-         function load_animation()
-         {
-             context.clearRect(0,0, canvas.width, canvas.height);
-
-             context.beginPath();
-             context.arc(x, y, radius1, startAngle1, endAngle1, counterClockwise);
-             context.lineWidth = 5;
-             context.strokeStyle = 'white';
-             context.stroke();
-
-             context.beginPath();
-             context.arc(x, y, radius1, startAngle2, endAngle2, counterClockwise);
-             context.lineWidth = 5;
-             context.strokeStyle = 'white';
-             context.stroke();
-
-             context.beginPath();
-             context.arc(x, y, radius2, startAngle3, endAngle3, counterClockwise);
-             context.lineWidth = 5;
-             context.strokeStyle = 'white';
-             context.stroke();
-
-             context.beginPath();
-             context.arc(x, y, radius2, startAngle4, endAngle4, counterClockwise);
-             context.lineWidth = 5;
-             context.strokeStyle = 'white';
-             context.stroke();
-
-             startAngle1 += -0.02 * Math.PI;
-             startAngle2 += -0.02 * Math.PI;
-             startAngle3 += 0.02 * Math.PI;
-             startAngle4 += 0.02 * Math.PI;
-
-             endAngle1 += -0.02 * Math.PI;
-             endAngle2 += -0.02 * Math.PI;
-             endAngle3 += 0.02 * Math.PI;
-             endAngle4 += 0.02 * Math.PI;
-
-             frame = window.requestAnimationFrame(load_animation);
-
-         }
-
-         frame = window.requestAnimationFrame(load_animation);
-         delay();
-
-         window.addEventListener('load', function(){
-             load =1;
-         });
-
-         function delay()
-         {
-             if(load == 0)
-                 setTimeout(delay,1000);
-             else
-                 end_animation();
-         }
-
-         function hide_loaders()
-         {
-             $('#load-right').hide();
-             $('#load-left').hide();
-         }
-
-
-         function end_animation()
-         {
-             window.cancelAnimationFrame(frame);
-             $("#load").hide();
-             $(".info").css("display", "inline-block");
-             $("#load-right").addClass("right-loaded");
-             $("#load-left").addClass("left-loaded");
-             setTimeout(hide_loaders, 1000);
-         }
-
-        </script>
+        <script src="index.js"></script>
     </body>
 </html>
