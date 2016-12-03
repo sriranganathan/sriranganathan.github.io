@@ -1,22 +1,27 @@
 html,body
 {
-    background-color: #ffffff;
     margin: 0;
     height: 100%;
     font-family: 'Open Sans',Arial,Helvetica Neue,sans-serif;
-    color: #333231;
     text-align: center;
+    background-color: #1a1a2a;
+    background-image: radial-gradient(circle, transparent 15%, #0a0b13 75%), url(noise-160.png);
+    background-repeat: repeat;
+    -webkit-background-size: auto;
+    background-size: auto;
+    background-position: center;
+    z-index: 0;
 }
 
 h1
 {
-    font-weight: 500;
+    font-size: 3em;
+    color: white;
 }
 
 p
 {
-    font-weight: 500;
-    color: rgba(49,49,48,.75);
+    color: white;
 }
 
 .info
@@ -28,7 +33,6 @@ p
 
 #coming_soon
 {
-    border-radius: 50%;
     margin-bottom: 10px;
 }
 
@@ -83,5 +87,13 @@ p
     html,body
     {
         overflow-x: hidden;
+    }
+}
+
+@media only screen and (min-height: 620px)
+{
+    .info
+    {
+        margin-top: 14%;
     }
 }
