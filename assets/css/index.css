@@ -3,9 +3,6 @@ html,body
     margin: 0;
     height: 100%;
     font-family: 'Open Sans',Arial,Helvetica Neue,sans-serif;
-    text-align: center;
-    background-color: #1a1a2a;
-    background-image: radial-gradient(circle, transparent 15%, #0a0b13 75%), url(noise-160.png);
     background-repeat: repeat;
     -webkit-background-size: auto;
     background-size: auto;
@@ -13,27 +10,10 @@ html,body
     z-index: 0;
 }
 
-h1
-{
-    font-size: 3em;
-    color: white;
-}
-
-p
-{
-    color: white;
-}
-
 .info
 {
     display: none;
-    margin-top: 8%;
     z-index: 1;
-}
-
-#coming_soon
-{
-    margin-bottom: 10px;
 }
 
 #load
@@ -87,13 +67,5 @@ p
     html,body
     {
         overflow-x: hidden;
-    }
-}
-
-@media only screen and (min-height: 620px)
-{
-    .info
-    {
-        margin-top: 14%;
     }
 }
